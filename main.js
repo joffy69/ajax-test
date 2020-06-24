@@ -13,7 +13,16 @@ function getData(type, cb) {
   };
 }
 
+function getTableHeaders(obj){
+    var getTableHeaders =[];
 
+    Object.keys(obj).forEach(function(key){
+        tableHeaders.push(`<td>${key}</td>`);
+    });
+
+    return `<tr>${tableHeaders}</tr>`;
+    
+}
 function writeToDocument(type){
     var el=document.getElementById("data");
     el.innerHTML=""; /*clear */
@@ -21,6 +30,9 @@ function writeToDocument(type){
         console.dir(data);
         data=data.results;
         data.forEach(function(item){
+            Object.keys(item).forEach(function(key){
+                console.log(key);
+            });
              el.innerHTML += "<p>"+item.name+"</p>";
          });
             
